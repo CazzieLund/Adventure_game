@@ -11,6 +11,9 @@ public abstract class Character {
         this.name = name;
     }
 
-    abstract void attack();
-    abstract void takeDamage();
+
+    abstract void attack(int damage, Character target);
+
+
+    abstract void takeDamage(int damage);
 }

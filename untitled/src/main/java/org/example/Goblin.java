@@ -2,8 +2,8 @@ package org.example;
 
 public class Goblin extends Monster{
 
-    public Goblin(int maxHp, int hp, String name, int xpReward, int goldReward) {
-        super(maxHp, hp, name, xpReward, goldReward);
+    public Goblin() {
+        super(30, 30, "Goblin", 20, 2, 10);
     }
 
 }

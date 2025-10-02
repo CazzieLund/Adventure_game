@@ -1,25 +1,30 @@
 package org.example;
 
 public class Hero extends Character {
-    int level;
-    int xp;
-    int gold;
+    int level = 1;
+    int xp = 0;
+    int gold = 0;
 
-    public Hero(int maxHp, int hp, String name, int level, int xp, int gold) {
-        super(maxHp, hp, name);
-        this.level = level;
-        this.xp = xp;
-        this.gold = gold;
+    public Hero(String name) {
+        super(100, 100, name);
     }
 
     @Override
-    void attack() {
-
+    void attack(int damage, Character target) {
+        System.out.println(this.name + " attackerar "
+                + target.name + " och gör " + damage + " skada!");
+        target.takeDamage(damage);
     }
 
     @Override
-    void takeDamage() {
+    void takeDamage(int damage) {
+        this.hp -= damage;
 
+        if (this.hp <= 0) {
+            System.out.println(this.name + " tappar sitt liv och dör som en lite sämre hjälte.");
+        } else {
+            System.out.println(this.name + " tog " + damage + " i skada och har nu " + this.hp + " i HP");
+        }
     }
 
     void gainXp(){
