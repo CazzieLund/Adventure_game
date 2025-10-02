@@ -12,14 +12,14 @@ public abstract class Monster extends Character{
         this.damage = damage;
     }
 
-    @Override
+    //Här körs monstrens attacker och sist kallar den på targets.takeDamage()
     void attack(int damage, Character target) {
         System.out.println(this.name + " attackerar "
                 + target.name + " och gör " + damage + " skada!");
         target.takeDamage(damage);
     }
 
-    @Override
+    //I takeDamage dras damage av ifrån hp, den kollar även om det finns hp kvar eller om karaktären dör
     void takeDamage(int damage) {
         this.hp -= damage;
 
