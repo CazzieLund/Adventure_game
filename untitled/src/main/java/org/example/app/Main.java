@@ -1,4 +1,6 @@
-package org.example;
+package org.example.app;
+
+import org.example.ui.Menu;
 
 import java.util.Scanner;
 
@@ -18,8 +20,7 @@ public class Main {
         boss.specialAttack(hero);*/
 
         //Starta spelet
-        Menu menu = new Menu();
-        menu.startMenu();
+        Menu.startMenu();
 
         //Encounter
        // System.out.println("Aah, se där! \n" +

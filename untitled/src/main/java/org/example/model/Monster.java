@@ -1,6 +1,6 @@
-package org.example;
+package org.example.model;
 
-public abstract class Monster extends Character{
+public abstract class Monster extends org.example.model.Character {
     int xpReward;
     int goldReward;
     int damage;

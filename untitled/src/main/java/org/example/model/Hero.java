@@ -1,12 +1,22 @@
-package org.example;
+package org.example.model;
 
-public class Hero extends Character {
+public class Hero extends org.example.model.Character {
     int level = 1;
     int xp = 0;
     int gold = 0;
 
     public Hero(String name) {
         super(100, 100, name);
+    }
+
+    public void getStats() {
+        System.out.println("===== Hjältens statistik =====");
+        System.out.println("Namn: " + this.name);
+        System.out.println("HP: " + this.hp + "/" + this.maxHp);
+        System.out.println("Level: " + this.level);
+        System.out.println("XP: " + this.xp);
+        System.out.println("Guld: " + this.gold);
+        System.out.println("==============================");
     }
 
     //Här körs hjältens attack och sist kallar den på targets.takeDamage()

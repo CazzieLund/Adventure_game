@@ -1,4 +1,4 @@
-package org.example;
+package org.example.model;
 
 public abstract class Character {
     int maxHp;
@@ -10,7 +10,6 @@ public abstract class Character {
         this.hp = hp;
         this.name = name;
     }
-
 
     abstract void attack(int damage, Character target);
 

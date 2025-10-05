@@ -1,6 +1,6 @@
-package org.example;
+package org.example.model;
 
-public class Boss extends Monster{
+public class Boss extends Monster {
 
     public Boss() {
         super(70, 70, "Boss Dragon", 50, 10, 25);
