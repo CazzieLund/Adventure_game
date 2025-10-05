@@ -17,11 +17,5 @@ public class Game {
         //        "Det är ett " + monster + "!!");
     }
 
-    public static void delay(int ms) {
-        try {
-            Thread.sleep(ms);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-    }
+
 }
