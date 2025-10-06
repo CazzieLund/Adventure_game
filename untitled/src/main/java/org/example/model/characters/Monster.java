@@ -1,15 +1,21 @@
-package org.example.model;
+package org.example.model.characters;
 
-public abstract class Monster extends org.example.model.Character {
-    int xpReward;
-    int goldReward;
-    int damage;
+public abstract class Monster extends org.example.model.characters.Character {
+    protected int xpReward;
+    protected int goldReward;
+    protected int damage;
+    protected String habitat;
 
-    public Monster(int maxHp, int hp, String name, int xpReward, int goldReward, int damage) {
+    public Monster(int maxHp, int hp, String name, int xpReward, int goldReward, int damage, String habitat) {
         super(maxHp, hp, name);
         this.xpReward = xpReward;
         this.goldReward = goldReward;
         this.damage = damage;
+        this.habitat = habitat;
+    }
+
+    public int getHp() {
+        return hp;
     }
 
     //Här körs monstrens attacker och sist kallar den på targets.takeDamage()
@@ -20,7 +26,7 @@ public abstract class Monster extends org.example.model.Character {
     }
 
     //I takeDamage dras damage av ifrån hp, den kollar även om det finns hp kvar eller om karaktären dör
-    void takeDamage(int damage) {
+    public void takeDamage(int damage) {
         this.hp -= damage;
 
         if (this.hp <= 0) {
@@ -29,4 +35,6 @@ public abstract class Monster extends org.example.model.Character {
             System.out.println(this.name + " tog " + damage + " i skada och har nu " + this.hp + " i HP");
         }
     }
+
+    public abstract void encounter();
 }

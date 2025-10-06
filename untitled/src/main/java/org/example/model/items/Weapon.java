@@ -1,4 +1,4 @@
-package org.example.model;
+package org.example.model.items;
 
 public class Weapon {
     String name;

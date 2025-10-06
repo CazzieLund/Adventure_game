@@ -1,7 +1,7 @@
 package org.example.ui;
 
 import org.example.app.Game;
-import org.example.model.Hero;
+import org.example.model.characters.Hero;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Menu {
     static Scanner sc = new Scanner(System.in);
 
-    public static void startMenu()
+    public void startMenu(Game game)
     {
         System.out.println("Välkommen till Äventyret! \n" +
                 "Du ska nu få kliva in i värld full utav monster och fina skatter.\n" +
@@ -18,15 +18,14 @@ public class Menu {
         int i = 0;
         while(i < 1){
             System.out.println(
-                    "[0] Starta spelet\n" +
-                    "[1] Stäng av");
+                    "[1] Starta spelet\n" +
+                    "[2] Stäng av");
             String ready = sc.nextLine();
-            if (Objects.equals(ready, "0")){
-                Game game = new Game();
+            if (Objects.equals(ready, "1")){
                 game.game();
 
                 i++;
-            }else if (Objects.equals(ready, "1")){
+            }else if (Objects.equals(ready, "2")){
                 System.out.println("Spelet stängs nu av, hoppas vi ses igen!");
                 System.exit(0);
             }else {
@@ -36,44 +35,47 @@ public class Menu {
 
     }
 
-    public static void gameMenu(Hero hero)
+    public void gameMenu(Game game, Hero hero)
     {
         while(true){
             System.out.println("Vad vill du göra här näst?\n" +
-                    "[0] Utforska Skogen\n" +
-                    "[1] Utforska Bergen\n" +
-                    "[2] Utforska Sjön\n" +
-                    "[3] Visa statistik\n" +
-                    "[4] Avsluta spelet\n");
+                    "[1] Utforska Skogen\n" +
+                    "[2] Utforska Bergen\n" +
+                    "[3] Utforska Sjön\n" +
+                    "[4] Visa statistik\n" +
+                    "[5] Avsluta spelet\n");
             String move = sc.nextLine();
             switch (move) {
-                case "0":
-                    System.out.println("Utforska Skogen");
-                    break;
                 case "1":
-                    System.out.println("Utforska Bergen");
+                    System.out.println("Utforska Skogen");
+                    game.encounter(0);
                     break;
                 case "2":
-                    System.out.println("Utforska Sjön");
+                    System.out.println("Utforska Bergen");
+                    game.encounter(1);
                     break;
                 case "3":
-                    hero.getStats();
+                    System.out.println("Utforska Sjön");
+                    game.encounter(2);
                     break;
                 case "4":
+                    hero.getStats();
+                    break;
+                case "5":
                     boolean askExit = true;
 
                     while (askExit) {
                         System.out.println("Är du säker på att du vill avsluta spelet? \n" +
                                 "Allt du gjort hittills kommer gå förlorat.\n" +
-                                "[0] Ja\n" +
-                                "[1] Nej");
+                                "[1] Ja\n" +
+                                "[2] Nej");
 
                         String exit = sc.nextLine();
 
                         switch (exit) {
-                            case "0":
-                                return; // Avslutar programmet
                             case "1":
+                                return; // Avslutar programmet
+                            case "2":
                                 askExit = false; // Avbryter loopen - tillbaka till huvudmenyn
                                 break;
                             default:

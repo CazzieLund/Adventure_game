@@ -1,9 +1,9 @@
-package org.example.model;
+package org.example.model.characters;
 
 public abstract class Character {
-    int maxHp;
-    int hp;
-    String name;
+    protected int maxHp;
+    protected int hp;
+    protected String name;
 
     public Character(int maxHp, int hp, String name) {
         this.maxHp = maxHp;
@@ -14,5 +14,5 @@ public abstract class Character {
     abstract void attack(int damage, Character target);
 
 
-    abstract void takeDamage(int damage);
+    public abstract void takeDamage(int damage);
 }

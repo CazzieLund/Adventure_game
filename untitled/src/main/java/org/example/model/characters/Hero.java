@@ -1,6 +1,6 @@
-package org.example.model;
+package org.example.model.characters;
 
-public class Hero extends org.example.model.Character {
+public class Hero extends org.example.model.characters.Character {
     int level = 1;
     int xp = 0;
     int gold = 0;
@@ -19,6 +19,14 @@ public class Hero extends org.example.model.Character {
         System.out.println("==============================");
     }
 
+    public int getLevel() {
+        return level;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
     //Här körs hjältens attack och sist kallar den på targets.takeDamage()
     void attack(int damage, Character target) {
         System.out.println(this.name + " attackerar "
@@ -27,7 +35,7 @@ public class Hero extends org.example.model.Character {
     }
 
     //I takeDamage dras damage av ifrån hp, den kollar även om det finns hp kvar eller om karaktären dör.
-    void takeDamage(int damage) {
+    public void takeDamage(int damage) {
         this.hp -= damage;
 
         if (this.hp <= 0) {

@@ -1,11 +1,24 @@
-package org.example.model;
+package org.example.model.bosses;
 
-public class Boss extends Monster {
+import org.example.model.characters.Character;
+import org.example.model.characters.Monster;
+import org.example.model.characters.Hero;
 
-    public Boss() {
-        super(70, 70, "Boss Dragon", 50, 10, 25);
+public abstract class Boss extends Monster {
+
+    public Boss(int maxHp, int hp, String name, int xpReward, int goldReward, int damage, String habitat) {
+        super(
+                maxHp,
+                hp,
+                name,
+                xpReward,
+                goldReward,
+                damage,
+                habitat
+        );
     }
-// Bossen har 30% chans att göra en specialattack och gör därmed dubbelt med damage.
+
+    // Bossen har 30% chans att göra en specialattack och gör därmed dubbelt med damage.
     void specialAttack(Character target){
         double rnd = Math.random();
         if (rnd < 0.3) { // 30% chans
@@ -22,5 +35,10 @@ public class Boss extends Monster {
             System.out.println(rnd);
             target.takeDamage(damage);
         }
+    }
+
+    public void encounter(){
+        System.out.println("Du kommer till " + habitat + " och får syn på en " + name + ". Den attackerar dig direkt!\n" +
+                "Nu är det fight:");
     }
 }

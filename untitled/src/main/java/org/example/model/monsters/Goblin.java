@@ -1,0 +1,17 @@
+package org.example.model.monsters;
+
+import org.example.model.characters.Monster;
+
+public abstract class Goblin extends Monster {
+
+    protected String weapon;
+
+    public Goblin(int maxHp, int hp, String name, int xpReward, int goldReward, int damage, String weapon, String habitat) {
+        super(maxHp, hp, name, xpReward, goldReward, damage, habitat);
+        this.weapon = weapon;
+    }
+
+    public void encounter(){
+        System.out.println("Du kommer till " + habitat + " och får syn på en " + name + ". Den attackerar dig med sin " + weapon + ". Nu är det fight:");
+    }
+}
