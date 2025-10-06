@@ -1,8 +1,8 @@
 package org.example.model.items;
 
 public class Weapon {
-    String name;
-    private final int damage;
+    private String name;
+    private int damage;
 
 
     public Weapon(String name, int damage) {
