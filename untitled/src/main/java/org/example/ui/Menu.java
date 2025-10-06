@@ -9,12 +9,12 @@ import java.util.Scanner;
 public class Menu {
     static Scanner sc = new Scanner(System.in);
 
+    //Startmeny, körs då spelet startas
     public void startMenu(Game game)
     {
         System.out.println("Välkommen till Äventyret! \n" +
                 "Du ska nu få kliva in i värld full utav monster och fina skatter.\n" +
                 "Är du redo?\n\n");
-
 
         while(true){
             System.out.println(
@@ -30,9 +30,10 @@ public class Menu {
                 System.out.println("Ogiltigt val, prova igen.");
             }
         }
-
     }
 
+    //Detta är menyn som kommer upp under spelets gång
+    //där hjälten gör val som vart han ska gå
     public void gameMenu(Game game, Hero hero)
     {
         while(true){
@@ -62,6 +63,7 @@ public class Menu {
                 case "5":
                     boolean askExit = true;
 
+                    //Vill du verklingen avsluta?
                     while (askExit) {
                         System.out.println("Är du säker på att du vill avsluta spelet? \n" +
                                 "Allt du gjort hittills kommer gå förlorat.\n" +
@@ -89,6 +91,7 @@ public class Menu {
 
     }
 
+    //Meny som kommer upp då spelet är slut
     public void playAgainMenu()
     {
         System.out.println("Vill du spela igen?\n" +

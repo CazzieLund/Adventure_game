@@ -1,5 +1,5 @@
 package org.example.model.characters;
-
+//abstrakt klass
 public abstract class Character {
     protected int maxHp;
     protected int hp;

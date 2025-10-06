@@ -16,7 +16,7 @@ import org.example.util.Delay;
 import java.util.Random;
 import java.util.Scanner;
 
-
+//Game-klassen styr hela spelet
 public class Game {
     Hero hero;
     Weapon sword;
@@ -27,6 +27,7 @@ public class Game {
         menu = new Menu();
         menu.startMenu(this);
 
+         //Här skapas karaktären och får sitt vapen
         System.out.println("Hej krigare! \n" +
                 "Härligt att se dig. Nu ska vi ge oss ut på äventyr.\n" +
                 "Men först och främst, vad heter du?");
@@ -41,10 +42,14 @@ public class Game {
         menu.gameMenu(this, hero);
     }
 
+    //encounter slumpar fram om hjälten ska träffa på ett vanligt monster, en boss eller hitta ett safe place
     public void encounter(int move) {
         double rnd = Math.random();
-        if (rnd < 0.7) {
+        if (rnd < 0.7) { // 70% att möta på ett vanligt monster
             Goblin goblin;
+
+            //Eftersom jag valt att ha flera typer utav monster finns en switch här
+            //som änddras beroendepå vilken väg hjälten väljer att gå
             switch (move) {
                 case 1:
                     goblin = new GoblinForest(hero);
@@ -60,7 +65,7 @@ public class Game {
             }
             System.out.println(move);
             fight(goblin);
-        } else if (rnd < 0.8) {
+        } else if (rnd < 0.8) { //10% chans att möta på en boss
             Boss boss;
             switch (move) {
                 case 1:
@@ -77,27 +82,26 @@ public class Game {
             }
             System.out.println(move);
             fight(boss);
-        }else {
-            System.out.println("\n  ___  _  _ _                  _      _      \n" +
-                    " / __|(_)(_) |_____ _ _   _ __| |__ _| |_ ___\n" +
-                    " \\__ \\/ _` | / / -_) '_| | '_ \\ / _` |  _(_-<\n" +
-                    " |___/\\__,_|_\\_\\___|_|   | .__/_\\__,_|\\__/__/\n" +
-                    "                         |_|                 \n");
+        }else { //20% chans att hitta ett safeplace
             safePlace();
         }
     }
 
+    //Här sker fighten
     private void fight(Monster monster) {
         monster.encounter();
+        //kollar så både monster och hjälte har liv
         while (hero.getHp() > 0 && monster.getHp() > 0) {
             hero.attack(sword.getDamage(), monster);
+            //delay så allt inte skrivs ut i en klump
             Delay.delay(1000);
-            if (hero.getHp() > 0 && monster.getHp() > 0) {
+            //kollar om monstret har liv innan den kör sin runda
+            if (monster.getHp() > 0) {
                 monster.attack(monster.getDamage(), hero);
                 Delay.delay(1000);
             }
         }
-
+        //kollar om monstret dör eller om du dör
         if (hero.getHp() > 0 && monster.getHp() <= 0) {
             System.out.println("Du vann fighten!\n");
             hero.gainXp(monster.getXpReward());
@@ -111,22 +115,32 @@ public class Game {
                     " | |__| | (_| | | | | | |  __/ | |__| |\\ V /  __/ |   \n" +
                     "  \\_____|\\__,_|_| |_| |_|\\___|  \\____/  \\_/ \\___|_|   \n" +
                     "                                                      \n" +
-                    "                                                      ");
+                    "                                                      "); //Game over
+            //Vill du spela igen?
             menu.playAgainMenu();
         }
+        //Har hjälten nått level 10?
         levelTen();
     }
 
+    //Detta sker om man hittar ett safe place
     private void safePlace(){
         Random rand = new Random();
         int number = rand.nextInt(10) + 1;
         hero.gainGold(number);
+        System.out.println("\n  ___  _  _ _                  _      _      \n" +
+                " / __|(_)(_) |_____ _ _   _ __| |__ _| |_ ___\n" +
+                " \\__ \\/ _` | / / -_) '_| | '_ \\ / _` |  _(_-<\n" +
+                " |___/\\__,_|_\\_\\___|_|   | .__/_\\__,_|\\__/__/\n" +
+                "                         |_|                 \n"); //säker plats
+
         System.out.println("Du har hittat en säker plats och ser en kista framför dig.\n" +
                 "När du öppnar den så hittar du " + number + " guldmynt!\n" +
                 "Du har nu " + hero.getGold() + " guldmynt.");
 
     }
 
+    //När man vinner
     private  void levelTen(){
         if (hero.getLevel() == 10){
             System.out.println(" __      ___                            _ \n" +
@@ -137,6 +151,7 @@ public class Game {
                     "     \\/   |_|_| |_|_| |_|\\__,_|_|  \\___(_)\n" +
                     "                                          \n" +
                     "                                          ");
+            //Vill du spela igen?
             menu.playAgainMenu();
         }else{
 

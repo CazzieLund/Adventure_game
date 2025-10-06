@@ -2,7 +2,7 @@ package org.example.model.bosses;
 
 import org.example.model.characters.Character;
 import org.example.model.characters.Monster;
-
+//abstrakt klass
 public abstract class Boss extends Monster {
 
     public Boss(int maxHp, int hp, String name, int xpReward, int goldReward, int damage, String habitat) {
@@ -16,7 +16,8 @@ public abstract class Boss extends Monster {
                 habitat
         );
     }
-
+    //När man slåss mot en boss kan en specialattack genomföras, här slumpas
+    //det fram och om det slumpas fram körs matoden specialAttack()
     public void attack(int damage, Character target) {
         double rnd = Math.random();
         if (rnd < 0.3) { // 30% chans
@@ -28,7 +29,7 @@ public abstract class Boss extends Monster {
         }
     }
 
-    // Bossen har 30% chans att göra en specialattack och gör därmed dubbelt med damage.
+    // Bossen gör dubbelt så mycket skada vid en specialattack
     void specialAttack(Character target){
             System.out.println(" _   __     _ _   _     _      _       _   _  __  __ _ \n" +
                     "| | / /    (_) | (_)   | |    | |     (_) (_)/ _|/ _| |\n" +
@@ -42,10 +43,9 @@ public abstract class Boss extends Monster {
             target.takeDamage((damage *2));
     }
 
+    //Print när man möter på en boss
     public void encounter(){
         System.out.println("Du kommer till " + habitat + " och får syn på en " + name + ". Den attackerar dig direkt!\n" +
                 "Nu är det fight:\n");
     }
-
-
 }

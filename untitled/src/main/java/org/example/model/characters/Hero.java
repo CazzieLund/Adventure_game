@@ -9,6 +9,7 @@ public class Hero extends Character {
         super(100, 100, name);
     }
 
+    //Hämtar hjältens stats
     public void getStats() {
         System.out.println("===== Hjältens statistik =====");
         System.out.println("Namn: " + this.name);
@@ -17,14 +18,6 @@ public class Hero extends Character {
         System.out.println("XP: " + this.xp);
         System.out.println("Guld: " + this.gold);
         System.out.println("==============================");
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public int getHp() {
-        return hp;
     }
 
     //Här körs hjältens attack och sist kallar den på targets.takeDamage()
@@ -45,6 +38,7 @@ public class Hero extends Character {
         }
     }
 
+    //Ger xp då hjälten dödar ett monster
     public void gainXp(int xpReward){
         xp += xpReward;
         if (xp >= 100) {
@@ -53,6 +47,7 @@ public class Hero extends Character {
         System.out.println("XP reward: " + xpReward + "\nDu har nu " + xp +"/100 XP");
     }
 
+    //När hjälten uppnår 100xp på en level levlar den upp
     private void levelUp(){
         level = level + 1;
         xp -= 100;
@@ -69,6 +64,7 @@ public class Hero extends Character {
                 "Level: " + level);
     }
 
+    //Ger guld då hjälten dödar ett monster
     public void gainGold(int goldReward){
         gold += goldReward;
         System.out.println("Guld belöning: " + goldReward + "\nDu har nu " + gold + " stycken mynt ");
@@ -77,4 +73,13 @@ public class Hero extends Character {
     public int getGold() {
         return gold;
     }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
 }

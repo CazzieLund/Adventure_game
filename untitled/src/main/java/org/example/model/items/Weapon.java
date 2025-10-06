@@ -4,6 +4,7 @@ public class Weapon {
     String name;
     private final int damage;
 
+
     public Weapon(String name, int damage) {
         this.name = name;
         this.damage = damage;
