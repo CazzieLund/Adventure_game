@@ -8,4 +8,8 @@ public class Weapon {
         this.name = name;
         this.damage = damage;
     }
+
+    public int getDamage() {
+        return damage;
+    }
 }

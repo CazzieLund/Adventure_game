@@ -11,13 +11,14 @@ import org.example.model.monsters.GoblinForest;
 import org.example.model.monsters.GoblinMontain;
 import org.example.model.monsters.GoblinSea;
 import org.example.ui.Menu;
+import org.example.util.Delay;
 
 import java.util.Scanner;
 
 
 public class Game {
     Hero hero;
-
+    Weapon sword;
     public void game() {
         Scanner sc = new Scanner(System.in);
 
@@ -26,7 +27,7 @@ public class Game {
                 "Men först och främst, vad heter du?");
         String name = sc.nextLine();
         hero = new Hero(name);
-        Weapon sword = new Weapon("Svärd" , 10);
+        sword = new Weapon("Svärd" , 10);
         System.out.println("Fint att träffa dig " + name + ". Jag heter Janne. \nInnan vi ger oss ut på äventyr så ska du få detta svärd av mig.\n" +
                 " _____________________________\n" +
                 "| Enkelt träsvärd | Skada: 10 |\n" +
@@ -81,9 +82,27 @@ public class Game {
 
     public void fight(Monster monster) {
         monster.encounter();
-        /* while (hero.getHp()< 0 && monster.getHp()< 0) {
+        while (hero.getHp() > 0 && monster.getHp() > 0) {
+            hero.attack(sword.getDamage(), monster);
+            Delay.delay(1000);
+            if (hero.getHp() > 0 && monster.getHp() > 0) {
+                monster.attack(monster.getDamage(), hero);
+                Delay.delay(1000);
+            }
+        }
 
-        }*/
+        if (hero.getHp() > 0 && monster.getHp() <= 0) {
+            System.out.println("Du vann fighten!\n");
+        }else if (hero.getHp() <= 0 && monster.getHp() > 0) {
+            System.out.println("   _____                         ____                 \n" +
+                    "  / ____|                       / __ \\                \n" +
+                    " | |  __  __ _ _ __ ___   ___  | |  | |_   _____ _ __ \n" +
+                    " | | |_ |/ _` | '_ ` _ \\ / _ \\ | |  | \\ \\ / / _ \\ '__|\n" +
+                    " | |__| | (_| | | | | | |  __/ | |__| |\\ V /  __/ |   \n" +
+                    "  \\_____|\\__,_|_| |_| |_|\\___|  \\____/  \\_/ \\___|_|   \n" +
+                    "                                                      \n" +
+                    "                                                      ");
+        }
     }
 
 }

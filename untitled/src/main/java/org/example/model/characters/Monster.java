@@ -18,21 +18,21 @@ public abstract class Monster extends org.example.model.characters.Character {
         return hp;
     }
 
-    //Här körs monstrens attacker och sist kallar den på targets.takeDamage()
-    void attack(int damage, Character target) {
-        System.out.println(this.name + " attackerar "
-                + target.name + " och gör " + damage + " skada!");
-        target.takeDamage(damage);
+    public int getDamage() {
+        return damage;
     }
+
+    //Här körs monstrens attacker och sist kallar den på targets.takeDamage()
+    public abstract void attack(int damage, Character target);
 
     //I takeDamage dras damage av ifrån hp, den kollar även om det finns hp kvar eller om karaktären dör
     public void takeDamage(int damage) {
         this.hp -= damage;
 
         if (this.hp <= 0) {
-            System.out.println(this.name + " tappar sitt liv och dör på fläcken.");
+            System.out.println("- " + this.name + " tappar sitt liv och dör på fläcken.\n");
         } else {
-            System.out.println(this.name + " tog " + damage + " i skada och har nu " + this.hp + " i HP");
+            System.out.println("- " + this.name + " tog " + damage + " i skada och har nu " + this.hp + " i HP\n");
         }
     }
 

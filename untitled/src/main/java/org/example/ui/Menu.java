@@ -48,15 +48,15 @@ public class Menu {
             switch (move) {
                 case "1":
                     System.out.println("Utforska Skogen");
-                    game.encounter(0);
+                    game.encounter(1);
                     break;
                 case "2":
                     System.out.println("Utforska Bergen");
-                    game.encounter(1);
+                    game.encounter(2);
                     break;
                 case "3":
                     System.out.println("Utforska Sjön");
-                    game.encounter(2);
+                    game.encounter(3);
                     break;
                 case "4":
                     hero.getStats();

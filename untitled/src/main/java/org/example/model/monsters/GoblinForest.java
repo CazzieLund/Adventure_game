@@ -11,7 +11,7 @@ public class GoblinForest extends Goblin {
                 "Skogsgoblin",
                 10 * hero.getLevel(),
                 5 * hero.getLevel(),
-                5  * hero.getLevel(),
+                50  * hero.getLevel(),
                 "Pilbåge",
                 "Skogen");
     }

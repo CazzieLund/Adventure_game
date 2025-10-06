@@ -28,7 +28,7 @@ public class Hero extends org.example.model.characters.Character {
     }
 
     //Här körs hjältens attack och sist kallar den på targets.takeDamage()
-    void attack(int damage, Character target) {
+    public void attack(int damage, Character target) {
         System.out.println(this.name + " attackerar "
                 + target.name + " och gör " + damage + " skada!");
         target.takeDamage(damage);
@@ -39,9 +39,9 @@ public class Hero extends org.example.model.characters.Character {
         this.hp -= damage;
 
         if (this.hp <= 0) {
-            System.out.println(this.name + " tappar sitt liv och dör som en lite sämre hjälte.");
+            System.out.println("- " + this.name + " tappar sitt liv och dör som en lite sämre hjälte.\n");
         } else {
-            System.out.println(this.name + " tog " + damage + " i skada och har nu " + this.hp + " i HP");
+            System.out.println("- " + this.name + " tog " + damage + " i skada och har nu " + this.hp + " i HP\n");
         }
     }
 

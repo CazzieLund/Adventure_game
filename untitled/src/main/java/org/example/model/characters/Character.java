@@ -15,4 +15,11 @@ public abstract class Character {
 
 
     public abstract void takeDamage(int damage);
+
+    public String getName() {
+        return name;
+    }
+    public int getMaxHp() {
+        return maxHp;
+    }
 }
