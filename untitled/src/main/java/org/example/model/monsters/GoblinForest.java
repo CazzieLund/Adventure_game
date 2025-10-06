@@ -6,12 +6,12 @@ public class GoblinForest extends Goblin {
 
     public GoblinForest(Hero hero) {
         super(
-                30 * hero.getLevel(),
-                30 * hero.getLevel(),
+                20 + 5 * hero.getLevel(),
+                20 + 5 * hero.getLevel(),
                 "Skogsgoblin",
-                10 * hero.getLevel(),
-                5 * hero.getLevel(),
-                50  * hero.getLevel(),
+                5 + 5 * hero.getLevel(),
+                5 + 2 * hero.getLevel(),
+                3 + 2  * hero.getLevel(),
                 "Pilbåge",
                 "Skogen");
     }

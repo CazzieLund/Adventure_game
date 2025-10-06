@@ -5,12 +5,12 @@ import org.example.model.characters.Hero;
 public class GoblinMontain extends Goblin {
     public GoblinMontain(Hero hero) {
         super(
-                30 * hero.getLevel(),
-                30 * hero.getLevel(),
+                20 + 5 * hero.getLevel(),
+                20 + 5 * hero.getLevel(),
                 "Bergsgoblin",
-                10 * hero.getLevel(),
-                5 * hero.getLevel(),
-                5  * hero.getLevel(),
+                5 + 5 * hero.getLevel(),
+                5 + 2 * hero.getLevel(),
+                3 + 2  * hero.getLevel(),
                 "Stenklubba",
                 "Bergen");
     }

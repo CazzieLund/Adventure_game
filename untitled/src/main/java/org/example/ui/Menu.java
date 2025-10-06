@@ -16,16 +16,14 @@ public class Menu {
                 "Du ska nu få kliva in i värld full utav monster och fina skatter.\n" +
                 "Är du redo?\n\n");
 
-        int i = 0;
-        while(i < 1){
+
+        while(true){
             System.out.println(
                     "[1] Starta spelet\n" +
                     "[2] Stäng av");
             String ready = sc.nextLine();
             if (Objects.equals(ready, "1")){
-                game.game();
-
-                i++;
+                return;
             }else if (Objects.equals(ready, "2")){
                 System.out.println("Spelet stängs nu av, hoppas vi ses igen!");
                 System.exit(0);
@@ -101,7 +99,9 @@ public class Menu {
         switch (again) {
             case "1":
                 Game game = new Game();
-                break;
+                startMenu(game);   // väntar tills spelaren väljer "Starta spelet"
+                game.game();       //starta ett nytt spel!
+                return;
             case "2":
                 System.out.println("Spelet stängs nu av, hoppas vi ses igen!");
                 System.exit(0);return;

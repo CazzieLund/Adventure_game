@@ -1,6 +1,6 @@
 package org.example.model.characters;
 
-public abstract class Monster extends org.example.model.characters.Character {
+public abstract class Monster extends Character {
     protected int xpReward;
     protected int goldReward;
     protected int damage;
@@ -12,14 +12,6 @@ public abstract class Monster extends org.example.model.characters.Character {
         this.goldReward = goldReward;
         this.damage = damage;
         this.habitat = habitat;
-    }
-
-    public int getHp() {
-        return hp;
-    }
-
-    public int getDamage() {
-        return damage;
     }
 
     //Här körs monstrens attacker och sist kallar den på targets.takeDamage()
@@ -37,4 +29,21 @@ public abstract class Monster extends org.example.model.characters.Character {
     }
 
     public abstract void encounter();
+
+
+    public int getHp() {
+        return hp;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public int getXpReward() {
+        return xpReward;
+    }
+
+    public int getGold() {
+    return goldReward;
+    }
 }

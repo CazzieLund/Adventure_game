@@ -1,6 +1,6 @@
 package org.example.model.characters;
 
-public class Hero extends org.example.model.characters.Character {
+public class Hero extends Character {
     int level = 1;
     int xp = 0;
     int gold = 0;
@@ -45,11 +45,32 @@ public class Hero extends org.example.model.characters.Character {
         }
     }
 
-    void gainXp(){
-
+    public void gainXp(int xpReward){
+        xp += xpReward;
+        if (xp >= 100) {
+            levelUp();
+        }
+        System.out.println("XP reward: " + xpReward + "\nDu har nu " + xp +"/100 XP");
     }
 
     void levelUp(){
+        level = level + 1;
+        xp -= 100;
+        maxHp += 15;
+        hp = maxHp;
+        System.out.println("  _                    _                     _ \n" +
+                " | |                  | |                   | |\n" +
+                " | |     _____   _____| |  _   _ _ __  _ __ | |\n" +
+                " | |    / _ \\ \\ / / _ \\ | | | | | '_ \\| '_ \\| |\n" +
+                " | |___|  __/\\ V /  __/ | | |_| | |_) | |_) |_|\n" +
+                " |______\\___| \\_/ \\___|_|  \\__,_| .__/| .__/(_)\n" +
+                "                                | |   | |      \n" +
+                "                                |_|   |_|      \n" +
+                "Level: " + level);
+    }
 
+    public void gainGold(int goldReward){
+        gold += goldReward;
+        System.out.println("Guld belöning: " + goldReward + "\nDu har nu " + gold + " stycken mynt ");
     }
 }

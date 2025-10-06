@@ -19,10 +19,11 @@ import java.util.Scanner;
 public class Game {
     Hero hero;
     Weapon sword;
+    Menu menu;
     public void game() {
         Scanner sc = new Scanner(System.in);
 
-        Menu menu = new Menu();
+        menu = new Menu();
         menu.startMenu(this);
 
         System.out.println("Hej krigare! \n" +
@@ -35,11 +36,8 @@ public class Game {
                 " _____________________________\n" +
                 "| Enkelt träsvärd | Skada: 10 |\n" +
                 " -----------------------------");
-        
+
         menu.gameMenu(this, hero);
-        //Encounter
-        // System.out.println("Aah, se där! \n" +
-        //        "Det är ett " + monster + "!!");
     }
 
     public void encounter(int move) {
@@ -79,7 +77,11 @@ public class Game {
             System.out.println(move);
             fight(boss);
         }else {
-            System.out.println("Safe place");
+            System.out.println("\n  ___  _  _ _                  _      _      \n" +
+                    " / __|(_)(_) |_____ _ _   _ __| |__ _| |_ ___\n" +
+                    " \\__ \\/ _` | / / -_) '_| | '_ \\ / _` |  _(_-<\n" +
+                    " |___/\\__,_|_\\_\\___|_|   | .__/_\\__,_|\\__/__/\n" +
+                    "                         |_|                 \n");
         }
     }
 
@@ -96,6 +98,9 @@ public class Game {
 
         if (hero.getHp() > 0 && monster.getHp() <= 0) {
             System.out.println("Du vann fighten!\n");
+            hero.gainXp(monster.getXpReward());
+            hero.gainGold(monster.getGold());
+            System.out.println("HP: " +  hero.getHp()+ "\n");
         }else if (hero.getHp() <= 0 && monster.getHp() > 0) {
             System.out.println("   _____                         ____                 \n" +
                     "  / ____|                       / __ \\                \n" +
@@ -105,6 +110,24 @@ public class Game {
                     "  \\_____|\\__,_|_| |_| |_|\\___|  \\____/  \\_/ \\___|_|   \n" +
                     "                                                      \n" +
                     "                                                      ");
+            menu.playAgainMenu();
+        }
+        levelTen();
+    }
+
+    public void levelTen(){
+        if (hero.getLevel() == 10){
+            System.out.println(" __      ___                            _ \n" +
+                    " \\ \\    / (_)                          | |\n" +
+                    "  \\ \\  / / _ _ __  _ __   __ _ _ __ ___| |\n" +
+                    "   \\ \\/ / | | '_ \\| '_ \\ / _` | '__/ _ \\ |\n" +
+                    "    \\  /  | | | | | | | | (_| | | |  __/_|\n" +
+                    "     \\/   |_|_| |_|_| |_|\\__,_|_|  \\___(_)\n" +
+                    "                                          \n" +
+                    "                                          ");
+            menu.playAgainMenu();
+        }else{
+
         }
     }
 
