@@ -1,6 +1,7 @@
 package org.example.ui;
 
 import org.example.app.Game;
+import org.example.app.Main;
 import org.example.model.characters.Hero;
 
 import java.util.Objects;
@@ -89,5 +90,21 @@ public class Menu {
             }
         }
 
+    }
+
+    public void playAgainMenu()
+    {
+        System.out.println("Vill du spela igen?\n" +
+                "[1] Ja\n" +
+                "[2] Nej, avsluta spelet");
+        String again = sc.nextLine();
+        switch (again) {
+            case "1":
+                Game game = new Game();
+                break;
+            case "2":
+                System.out.println("Spelet stängs nu av, hoppas vi ses igen!");
+                System.exit(0);return;
+        }
     }
 }

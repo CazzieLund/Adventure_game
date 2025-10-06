@@ -22,6 +22,9 @@ public class Game {
     public void game() {
         Scanner sc = new Scanner(System.in);
 
+        Menu menu = new Menu();
+        menu.startMenu(this);
+
         System.out.println("Hej krigare! \n" +
                 "Härligt att se dig. Nu ska vi ge oss ut på äventyr.\n" +
                 "Men först och främst, vad heter du?");
@@ -32,7 +35,7 @@ public class Game {
                 " _____________________________\n" +
                 "| Enkelt träsvärd | Skada: 10 |\n" +
                 " -----------------------------");
-        Menu menu = new Menu();
+        
         menu.gameMenu(this, hero);
         //Encounter
         // System.out.println("Aah, se där! \n" +

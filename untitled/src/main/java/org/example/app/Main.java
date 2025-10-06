@@ -17,8 +17,7 @@ public class Main {
 
         //Starta spelet
         Game game = new Game();
-        Menu menu = new Menu();
-        menu.startMenu(game);
+
 
         //Encounter
        // System.out.println("Aah, se där! \n" +
