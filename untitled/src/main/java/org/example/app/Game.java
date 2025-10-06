@@ -13,6 +13,7 @@ import org.example.model.monsters.GoblinSea;
 import org.example.ui.Menu;
 import org.example.util.Delay;
 
+import java.util.Random;
 import java.util.Scanner;
 
 
@@ -82,10 +83,11 @@ public class Game {
                     " \\__ \\/ _` | / / -_) '_| | '_ \\ / _` |  _(_-<\n" +
                     " |___/\\__,_|_\\_\\___|_|   | .__/_\\__,_|\\__/__/\n" +
                     "                         |_|                 \n");
+            safePlace();
         }
     }
 
-    public void fight(Monster monster) {
+    private void fight(Monster monster) {
         monster.encounter();
         while (hero.getHp() > 0 && monster.getHp() > 0) {
             hero.attack(sword.getDamage(), monster);
@@ -100,7 +102,7 @@ public class Game {
             System.out.println("Du vann fighten!\n");
             hero.gainXp(monster.getXpReward());
             hero.gainGold(monster.getGold());
-            System.out.println("HP: " +  hero.getHp()+ "\n");
+            System.out.println("HP: " +  hero.getHp() + "/" + hero.getMaxHp() + "\n");
         }else if (hero.getHp() <= 0 && monster.getHp() > 0) {
             System.out.println("   _____                         ____                 \n" +
                     "  / ____|                       / __ \\                \n" +
@@ -115,7 +117,17 @@ public class Game {
         levelTen();
     }
 
-    public void levelTen(){
+    private void safePlace(){
+        Random rand = new Random();
+        int number = rand.nextInt(10) + 1;
+        hero.gainGold(number);
+        System.out.println("Du har hittat en säker plats och ser en kista framför dig.\n" +
+                "När du öppnar den så hittar du " + number + " guldmynt!\n" +
+                "Du har nu " + hero.getGold() + " guldmynt.");
+
+    }
+
+    private  void levelTen(){
         if (hero.getLevel() == 10){
             System.out.println(" __      ___                            _ \n" +
                     " \\ \\    / (_)                          | |\n" +

@@ -2,7 +2,7 @@ package org.example.model.items;
 
 public class Weapon {
     String name;
-    int damage;
+    private final int damage;
 
     public Weapon(String name, int damage) {
         this.name = name;

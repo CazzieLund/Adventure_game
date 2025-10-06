@@ -1,7 +1,6 @@
 package org.example.ui;
 
 import org.example.app.Game;
-import org.example.app.Main;
 import org.example.model.characters.Hero;
 
 import java.util.Objects;

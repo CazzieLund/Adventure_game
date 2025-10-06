@@ -14,9 +14,6 @@ public abstract class Monster extends Character {
         this.habitat = habitat;
     }
 
-    //Här körs monstrens attacker och sist kallar den på targets.takeDamage()
-    public abstract void attack(int damage, Character target);
-
     //I takeDamage dras damage av ifrån hp, den kollar även om det finns hp kvar eller om karaktären dör
     public void takeDamage(int damage) {
         this.hp -= damage;
@@ -29,7 +26,6 @@ public abstract class Monster extends Character {
     }
 
     public abstract void encounter();
-
 
     public int getHp() {
         return hp;

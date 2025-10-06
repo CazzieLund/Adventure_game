@@ -1,9 +1,9 @@
 package org.example.model.characters;
 
 public class Hero extends Character {
-    int level = 1;
-    int xp = 0;
-    int gold = 0;
+    private int level = 1;
+    private int xp = 0;
+    private int gold = 0;
 
     public Hero(String name) {
         super(100, 100, name);
@@ -30,7 +30,7 @@ public class Hero extends Character {
     //Här körs hjältens attack och sist kallar den på targets.takeDamage()
     public void attack(int damage, Character target) {
         System.out.println(this.name + " attackerar "
-                + target.name + " och gör " + damage + " skada!");
+                + target.getName() + " och gör " + damage + " skada!");
         target.takeDamage(damage);
     }
 
@@ -53,10 +53,10 @@ public class Hero extends Character {
         System.out.println("XP reward: " + xpReward + "\nDu har nu " + xp +"/100 XP");
     }
 
-    void levelUp(){
+    private void levelUp(){
         level = level + 1;
         xp -= 100;
-        maxHp += 15;
+        maxHp += 20;
         hp = maxHp;
         System.out.println("  _                    _                     _ \n" +
                 " | |                  | |                   | |\n" +
@@ -72,5 +72,9 @@ public class Hero extends Character {
     public void gainGold(int goldReward){
         gold += goldReward;
         System.out.println("Guld belöning: " + goldReward + "\nDu har nu " + gold + " stycken mynt ");
+    }
+
+    public int getGold() {
+        return gold;
     }
 }

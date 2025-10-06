@@ -2,7 +2,6 @@ package org.example.model.bosses;
 
 import org.example.model.characters.Character;
 import org.example.model.characters.Monster;
-import org.example.model.characters.Hero;
 
 public abstract class Boss extends Monster {
 
